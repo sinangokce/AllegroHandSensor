@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   handtracker
+  glove_tekscan_ros_wrapper
 # roslaunch  # Disabled due to testing
 )
 
@@ -43,6 +44,10 @@ target_link_libraries(allegro_node_grasp allegro_node ${catkin_LIBRARIES})
 add_executable(grasp_type src/grasp_type.cpp)
 target_link_libraries(grasp_type allegro_node ${catkin_LIBRARIES})
 add_dependencies(grasp_type ${catkin_EXPORTED_TARGETS})
+
+add_executable(grasp_sensor src/grasp_sensor.cpp)
+target_link_libraries(grasp_sensor allegro_node ${catkin_LIBRARIES})
+add_dependencies(grasp_sensor ${catkin_EXPORTED_TARGETS})
 
 add_executable(current_listener src/current_listener.cpp)
 target_link_libraries(current_listener allegro_node ${catkin_LIBRARIES})

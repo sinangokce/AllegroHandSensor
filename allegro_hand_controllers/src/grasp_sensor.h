@@ -9,7 +9,9 @@
 #include "std_msgs/String.h"
 #include "std_msgs/Float32.h"
 #include "handtracker/spper.h"
+#include "glove_tekscan_ros_wrapper/LasaDataStreamWrapper.h"
 
+ 
 #include <string>
 #include <boost/thread/thread.hpp>
 
@@ -51,6 +53,8 @@ class AllegroNodeGraspController {
 
     void speedPerCallback(const handtracker::spper &msg);
 
+    void sensorDataCallback(const glove_tekscan_ros_wrapper::LasaDataStreamWrapper &msg);
+
     void nextStateCallback(const sensor_msgs::JointState &msg);
 
     bool checkEquality(int array[]);
@@ -74,6 +78,7 @@ class AllegroNodeGraspController {
     ros::Subscriber next_state_sub;
     ros::Subscriber tactile_sub;
     ros::Subscriber SpeedPer_sub;
+    ros::Subscriber sensor_data_sub;
 
     ros::Publisher current_state_pub;
     ros::Publisher desired_state_pub;

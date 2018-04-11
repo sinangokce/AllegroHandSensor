@@ -1,4 +1,4 @@
-#include "grasp_type.h"
+#include "grasp_sensor.h"
 #include <stdio.h>
 //#include <algorithm>
 #include <iterator>
@@ -33,6 +33,8 @@ AllegroNodeGraspController::AllegroNodeGraspController() {
 
   SpeedPer_sub = nh.subscribe("/lwr/speedPercentage", 10, &AllegroNodeGraspController::speedPerCallback, this);
 
+  sensor_data_sub = nh.subscribe("/LasaDataStream", 10, &AllegroNodeGraspController::sensorDataCallback, this);
+
   desired_state_pub = nh.advertise<sensor_msgs::JointState>("allegroHand_0/joint_cmd", 1);
 
   next_state_sub = nh.subscribe(NEXT_STATE_TOPIC, 1, &AllegroNodeGraspController::nextStateCallback, this);
@@ -51,6 +53,10 @@ AllegroNodeGraspController::~AllegroNodeGraspController() {
 void AllegroNodeGraspController::speedPerCallback(const handtracker::spper &msg) {
   speed_Percentage = msg.sPer;
   hand_Direction = msg.dir;
+}
+
+void AllegroNodeGraspController::sensorDataCallback(const glove_tekscan_ros_wrapper::LasaDataStreamWrapper &msg){
+  
 }
 
 void AllegroNodeGraspController::graspTypeControllerCallback(const std_msgs::String::ConstPtr &msg) {

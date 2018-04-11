@@ -20,11 +20,11 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include  
 #  LIBRARIES glove_tekscan_ros_wrapper
-  CATKIN_DEPENDS message_runtime geometry_msgs rosbag roscpp tf 
+  CATKIN_DEPENDS geometry_msgs rosbag roscpp tf message_runtime
  # DEPENDS system_lib
 )
 
 include_directories(${catkin_INCLUDE_DIRS} ${YARP_INCLUDE_DIRS})
 add_executable(IntTacMain src/IntTacMain.cpp)
 target_link_libraries(IntTacMain  ${catkin_LIBRARIES} ${YARP_LIBRARIES})
-add_dependencies(IntTacMain glove_tekscan_ros_wrapper_generate_messages_cpp)
+

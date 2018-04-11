@@ -17,6 +17,8 @@
     <build_depend>roscpp</build_depend>
     <build_depend>sensor_msgs</build_depend>
     <build_depend>handtracker</build_depend>
+    <build_depend>glove_tekscan_ros_wrapper</build_depend>
+    
     <run_depend>allegro_hand_description</run_depend>
     <run_depend>allegro_hand_driver</run_depend>
     <run_depend>allegro_hand_parameters</run_depend>
