@@ -59,6 +59,8 @@ class AllegroNodeGraspController {
 
     bool checkEquality(int array[]);
 
+    float average(int a, int b);
+
     void initControllerxx();
 
     void doIt();
